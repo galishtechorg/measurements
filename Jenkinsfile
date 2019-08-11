@@ -32,14 +32,6 @@ pipeline {
         }
       }
     }
-    stage('Deploy to QA') {
-	when {
-          branch 'master'
-        }
-        steps {
-                echo 'Building..'
-        }
-    }
     stage('Build Release') {
       when {
         branch 'master'
