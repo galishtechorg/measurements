@@ -56,6 +56,9 @@ pipeline {
       }
     }
     stage('Promote to sit') {
+   	    when {
+              branch 'master'
+            }	
 	    steps {
                 echo 'Promote to sit..'
             }
