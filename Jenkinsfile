@@ -32,6 +32,14 @@ pipeline {
         }
       }
     }
+    stage('Deploy to QA') {
+	when {
+          branch 'master'
+        }
+        steps {
+                echo 'Building..'
+        }
+    }
     stage('Build Release') {
       when {
         branch 'master'
@@ -54,6 +62,11 @@ pipeline {
           sh "jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:\$(cat VERSION)"
         }
       }
+    }
+    stage('Promote to sit') {
+	    steps {
+                echo 'Promote to sit..'
+            }
     }
     stage('Promote to Environments') {
       when {
