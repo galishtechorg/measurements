@@ -55,6 +55,11 @@ pipeline {
         }
       }
     }
+    stage('Promote to sit') {
+	    steps {
+                echo 'Promote to sit..'
+            }
+    }
     stage('Promote to Environments') {
       when {
         branch 'master'
